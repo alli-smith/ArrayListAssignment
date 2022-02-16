@@ -1,0 +1,78 @@
+/*
+ * Activity 3.7.2 Assignment
+ * Alli Smith and Ashley Palluconi
+ * Period 4
+ * 2/16/2022
+ */
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class ArrayListAssignment
+{  
+   public static void main(String args[])
+   {
+      String userInput = "";
+      Scanner sc = new Scanner(System.in);
+      ArrayList<String> animalList = new ArrayList<String>();  
+      animalList.add("Dog");
+      animalList.add("Cat");
+      animalList.add("Rabbit");
+
+      while(!userInput.equals("q"))
+      {
+        System.out.println(animalList);
+        System.out.println("Would you like to (a)dd, (i)nsert, (r)emove, re(p)lace, or (q)uit? ");
+        userInput = sc.nextLine();
+        
+        if (userInput.equals("a")) {
+          System.out.println("Enter an animal");
+          String animal = sc.nextLine();
+          animalList.add(animal);
+        }
+        else if (userInput.equals("i")) {
+          System.out.println("Enter an animal");
+          String animal = sc.nextLine();
+          System.out.println("Enter a position");
+          int position = Integer.parseInt(sc.nextLine());
+          if (1 <= position && position <= animalList.size()) {
+            animalList.add(position-1, animal);
+          }
+          else {
+            System.out.println("Bad position!");
+          }
+        }
+        else if (userInput.equals("r")) {
+          System.out.println("Enter a position");
+          int position = sc.nextInt();
+          sc.nextLine();
+          if (1 <= position && position <= animalList.size()) {
+            animalList.remove(position-1);
+          }
+          else {
+            System.out.println("Bad position!");
+          }
+        }
+        else if (userInput.equals("p")) {
+          System.out.println("Enter an animal");
+          String animal = sc.nextLine();
+          System.out.println("Enter a position");
+          int position = sc.nextInt();
+          sc.nextLine();
+          if (1 <= position && position <= animalList.size()) {
+            animalList.remove(position-1);
+            animalList.add(position-1, animal);
+          }
+          else {
+            System.out.println("Bad position!");
+          }
+        }
+        else if (userInput.equals("q")) {
+          break;
+        }
+        else {
+          System.out.println("Invalid. Try again");
+        }
+      }
+    sc.close();
+    }
+}
